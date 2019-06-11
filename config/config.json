@@ -1,0 +1,5 @@
+{
+	"port":3000,
+	"mongodbConnnection":"mongodb://localhost:27017/BoB",
+	"socketIoPort":40718
+}
