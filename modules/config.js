@@ -1,24 +1,11 @@
-/******************************************
 
-    Módulo:
-    Descripción:
-
-********************************************/
-//Definimos nombre del módulo
 var __moduleName = '/modules/config';
 
-///////////// Dependencias del módulo ///////////////////
-var fs = require('fs');
-var util = require('util');
-var extend = require('extend');
+const fs = require('fs');
+const util = require('util');
+const extend = require('extend');
 
-
-/********************************************
- *            PÚBLICO
- *******************************************/
-
-var config = {};
-module.exports = config;
+const config = {};
 
 config.loadConfiguration = function loadConfiguration(mode){
 
@@ -36,3 +23,4 @@ config.loadConfiguration = function loadConfiguration(mode){
 
 
 };
+module.exports = config;

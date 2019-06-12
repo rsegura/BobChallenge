@@ -12,4 +12,4 @@ class MongoConnector {
 	}
 }
 
-module.exports = MongoConnector;
+module.exports = {MongoConnector};

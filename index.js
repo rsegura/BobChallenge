@@ -1,12 +1,12 @@
-var cluster = require("cluster");
+const cluster = require("cluster");
 const config = require("./modules/config");
 config.loadConfiguration("config");
-const MongoConnector = require(process.cwd()+'/modules/MongoConnector');
+const {MongoConnector} = require(process.cwd()+'/modules');
 if (cluster.isMaster) {
 
-	var Master = require("./master");
-	var master = new Master({cluster: cluster});
-	var cpuCount = require("os").cpus().length;
+	const Master = require("./master");
+	const master = new Master({cluster: cluster});
+	const cpuCount = require("os").cpus().length;
 
 	for (var i = 0; i < cpuCount; i++) {
 		master.createWorker();
@@ -17,9 +17,9 @@ if (cluster.isMaster) {
 		master.spawnWorker(500);
 	});
 } else {
-	var Workers = require("./workers");
+	const Workers = require("./workers");
 	let mongoConnector = new MongoConnector({"MONGODB_URI":config.mongodbConnnection});
-	var workers = new Workers();
+	const workers = new Workers();
 	mongoConnector.connect().then(async () => {
 		 workers.run();
 		console.log("worker " + cluster.worker.id + "  running!");

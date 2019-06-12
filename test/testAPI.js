@@ -16,3 +16,14 @@ describe("get all drivers", () =>{
 			})
 	})
 });
+
+describe("Send Request Status", () =>{
+	it('should send request status to all drivers', (done) =>{
+		chai.request(url)
+			.get('/api/status')
+			.end((err, res) => {
+				expect(res).to.have.status(200);
+				done();
+			})
+	})
+});
